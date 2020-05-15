@@ -7,17 +7,17 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private BlockSpawner[] blockSpawners;
-    [SerializeField] private Transform blocksContainer;
     [SerializeField] private float containerMoveSpeed = 2f;
+    [SerializeField] private Transform cameraTransform;
 
     private BlockSpawner _currentSpawner;
     private int _spawnerIndex;
 
-    private bool _shouldContainerMove;
-    private Vector3 _containerTargetPos;
+    private bool _shouldCameraMove;
+    private Vector3 _cameraTargetPos;
 
     private bool _isGameStarted;
-    
+
     private void OnEnable()
     {
         BlockController.IsBlockOutside = false;
@@ -32,17 +32,18 @@ public class GameManager : MonoBehaviour
                 _isGameStarted = true;
                 UIManager.Instance.HideStartCanvas();
             }
-            
+
             if (BlockController.CurrentBlock != null)
             {
                 BlockController.CurrentBlock.StopMoving();
 
-                _shouldContainerMove = true;
-                _containerTargetPos = new Vector3(blocksContainer.position.x, blocksContainer.position.y - 0.2f);
+                _shouldCameraMove = true;
+                _cameraTargetPos = new Vector3(cameraTransform.position.x, cameraTransform.position.y + 0.2f, cameraTransform.position.z);
             }
 
             if (!BlockController.IsBlockOutside)
             {
+                //UIManager.Instance.AddScore();
                 SpawnBlock();
             }
         }
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(0);
         }
         
-        if (_shouldContainerMove)
+        if (_shouldCameraMove)
         {
             MovingBlocksDown();
         }
@@ -66,12 +67,11 @@ public class GameManager : MonoBehaviour
     
     private void MovingBlocksDown()
     {
-        blocksContainer.position =
-            Vector3.Lerp(blocksContainer.position, _containerTargetPos, containerMoveSpeed * Time.deltaTime);
+        cameraTransform.position = Vector3.Lerp(cameraTransform.position, _cameraTargetPos, containerMoveSpeed * Time.deltaTime);
 
-        if (blocksContainer.position.y <= _containerTargetPos.y)
+        if (cameraTransform.position.y >= _cameraTargetPos.y)
         {
-            _shouldContainerMove = false;
+            _shouldCameraMove = false;
         }
     }
 }

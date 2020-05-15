@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockPoolManager : MonoBehaviour
+public class BlockPool : MonoBehaviour
 {
-    public static BlockPoolManager Instance { get; private set; }
+    public static BlockPool Instance { get; private set; }
     
     [SerializeField] private GameObject blockToSpawn;
     [SerializeField] private GameObject blockContainer;
@@ -26,7 +26,7 @@ public class BlockPoolManager : MonoBehaviour
     {
         _pooledBlocks = new List<GameObject>();
 
-        for (int i = 0; i < amountToPool; i++)
+        for (var i = 0; i < amountToPool; i++)
         {
             var obj = Instantiate(blockToSpawn, blockContainer.transform);
             obj.gameObject.SetActive(false);

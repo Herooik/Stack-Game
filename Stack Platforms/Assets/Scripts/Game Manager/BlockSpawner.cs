@@ -6,15 +6,15 @@ public class BlockSpawner : MonoBehaviour
 {
     [SerializeField] private BlockController blockPrefab;
     [SerializeField] private MoveDirection moveDirection;
-    [SerializeField] private GameObject blocksContainer;
 
     public void SpawningBlock()
     {
-        var block = BlockPoolManager.Instance.GetPooledObject();
+        var block = BlockPool.Instance.GetPooledObject();
         block.SetActive(true);
-        
+
         if (BlockController.LastBlock != null && !BlockController.IsStartBlock)
         {
+            
             var zPos = moveDirection == MoveDirection.Z
                 ? transform.position.z
                 : BlockController.LastBlock.transform.position.z;
@@ -35,7 +35,7 @@ public class BlockSpawner : MonoBehaviour
         
         BlockController.MoveDirection = moveDirection;
     }
-    
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;

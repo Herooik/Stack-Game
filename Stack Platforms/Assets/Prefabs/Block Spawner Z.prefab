@@ -46,4 +46,3 @@ MonoBehaviour:
   blockPrefab: {fileID: 4536742578545156299, guid: f8fa820f0549db44a8b192afeb6291f8,
     type: 3}
   moveDirection: 1
-  blocksContainer: {fileID: 0}

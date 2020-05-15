@@ -13,9 +13,9 @@ public class BlockController : MonoBehaviour
     public static bool IsStartBlock { get; set; }
     public static bool IsBlockOutside { get; set; }
 
+    [SerializeField] private DropBlockController dropBlockController;
     [SerializeField] private MoveBlock moveBlock;
     [SerializeField] private Transform startBlock;
-    [SerializeField] private GameObject dropBlock;
     [SerializeField] private float marginError = 0.5f;
 
     private void OnEnable()
@@ -49,6 +49,8 @@ public class BlockController : MonoBehaviour
         var direction = distance > 0 ? 1f : -1f;
 
         if (CheckDistanceDifference(distance)) return;
+        
+        UIManager.Instance.AddScore();
 
         if (MoveDirection == MoveDirection.Z)
         {
@@ -74,6 +76,8 @@ public class BlockController : MonoBehaviour
     
     private void ConnectBlocks()
     {
+        UIManager.Instance.AddScore();
+        
         transform.position = new Vector3(LastBlock.position.x, transform.position.y, LastBlock.position.z);
         transform.localScale = new Vector3(LastBlock.localScale.x, transform.localScale.y, LastBlock.localScale.z);
 
@@ -89,10 +93,11 @@ public class BlockController : MonoBehaviour
         if (!(Mathf.Abs(distance) > maxDistanceDifference)) return false;
 
         CurrentBlock.gameObject.AddComponent<Rigidbody>();
+        Destroy(CurrentBlock, 1f);
         IsBlockOutside = true;
         LastBlock = null;
         CurrentBlock = null;
-        
+
         UIManager.Instance.ShowEndGameCanvas();
         return true;
     }
@@ -111,7 +116,7 @@ public class BlockController : MonoBehaviour
         
         var fallingBlockXPosition = blockEdge + (fallingBlockSize / 2f * direction);
         
-        SpawnDropBlock(fallingBlockXPosition, fallingBlockSize);
+        dropBlockController.SpawnDropBlock(fallingBlockXPosition, fallingBlockSize);
     }
     
     private void SplitBlockOnZ(float hangover, float direction)
@@ -128,24 +133,6 @@ public class BlockController : MonoBehaviour
         
         var fallingBlockZPosition = blockEdge + (fallingBlockZSize / 2f * direction);
         
-        SpawnDropBlock(fallingBlockZPosition, fallingBlockZSize);
-    }
-
-    private void SpawnDropBlock(float fallingBlockZPosition, float fallingBlockSize)
-    {
-        var cube = Instantiate(dropBlock);
-        
-        if (MoveDirection == MoveDirection.Z)
-        {
-            cube.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, fallingBlockSize);
-            cube.transform.position = new Vector3(transform.position.x, transform.position.y, fallingBlockZPosition);
-        }
-        else
-        {
-            cube.transform.localScale = new Vector3(fallingBlockSize, transform.localScale.y, transform.localScale.z);
-            cube.transform.position = new Vector3(fallingBlockZPosition, transform.position.y, transform.position.z);
-        }
-        
-        Destroy(cube.gameObject, 1f);
+        dropBlockController.SpawnDropBlock(fallingBlockZPosition, fallingBlockZSize);
     }
 }

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3199829366870559760}
   - component: {fileID: 7318586875391348453}
   - component: {fileID: 4148845792833678378}
-  - component: {fileID: -4325649754610967027}
+  - component: {fileID: -8331642677105380745}
+  - component: {fileID: 6679013931174112941}
   m_Layer: 0
-  m_Name: DropCube
+  m_Name: DropBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e79bb00b04d68b848b68d59dadf700a4, type: 2}
+  - {fileID: 2100000, guid: ea6fec4bb58f36b4da9c7921ce742e2e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +95,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &-4325649754610967027
+--- !u!54 &-8331642677105380745
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,3 +111,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6679013931174112941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3240725872863056500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca8c77ff9be5374d99da58b6a9cfc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropBlockPrefab: {fileID: 3240725872863056500}
+  dropBlockRenderer: {fileID: 7318586875391348453}
