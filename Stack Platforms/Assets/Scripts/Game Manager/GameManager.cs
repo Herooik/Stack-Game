@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
 
             if (!BlockController.IsBlockOutside)
             {
-                //UIManager.Instance.AddScore();
                 SpawnBlock();
             }
         }
@@ -54,8 +53,9 @@ public class GameManager : MonoBehaviour
         
         if (_shouldCameraMove)
         {
-            MovingBlocksDown();
+            MoveCameraUp();
         }
+        
     }
 
     private void SpawnBlock()
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         _currentSpawner.SpawningBlock();
     }
     
-    private void MovingBlocksDown()
+    private void MoveCameraUp()
     {
         cameraTransform.position = Vector3.Lerp(cameraTransform.position, _cameraTargetPos, containerMoveSpeed * Time.deltaTime);
 

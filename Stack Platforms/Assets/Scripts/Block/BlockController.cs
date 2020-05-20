@@ -13,6 +13,7 @@ public class BlockController : MonoBehaviour
     public static bool IsStartBlock { get; set; }
     public static bool IsBlockOutside { get; set; }
 
+    [SerializeField] private PlaySoundSystem playSoundSystem;
     [SerializeField] private DropBlockController dropBlockController;
     [SerializeField] private MoveBlock moveBlock;
     [SerializeField] private Transform startBlock;
@@ -45,12 +46,13 @@ public class BlockController : MonoBehaviour
             ConnectBlocks();
             return;
         }
-        
-        var direction = distance > 0 ? 1f : -1f;
 
         if (CheckDistanceDifference(distance)) return;
         
-        UIManager.Instance.AddScore();
+        playSoundSystem.PlayPutSound();
+        ScoreManager.Instance.AddScore();
+        
+        var direction = distance > 0 ? 1f : -1f;
 
         if (MoveDirection == MoveDirection.Z)
         {
@@ -76,7 +78,9 @@ public class BlockController : MonoBehaviour
     
     private void ConnectBlocks()
     {
-        UIManager.Instance.AddScore();
+        playSoundSystem.PlayPerfectMatchSound();
+        
+        ScoreManager.Instance.AddScore();
         
         transform.position = new Vector3(LastBlock.position.x, transform.position.y, LastBlock.position.z);
         transform.localScale = new Vector3(LastBlock.localScale.x, transform.localScale.y, LastBlock.localScale.z);
@@ -91,9 +95,8 @@ public class BlockController : MonoBehaviour
             : LastBlock.localScale.x;
 
         if (!(Mathf.Abs(distance) > maxDistanceDifference)) return false;
-
+        
         CurrentBlock.gameObject.AddComponent<Rigidbody>();
-        Destroy(CurrentBlock, 1f);
         IsBlockOutside = true;
         LastBlock = null;
         CurrentBlock = null;

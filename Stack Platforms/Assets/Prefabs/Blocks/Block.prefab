@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4536742578545156299}
   - component: {fileID: 7998317574631422338}
   - component: {fileID: -1093537395532494876}
+  - component: {fileID: -1731908742009316011}
   m_Layer: 0
   m_Name: Block
   m_TagString: Untagged
@@ -108,12 +109,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705404eff42e1394485fad83bbc875de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playSoundSystem: {fileID: -1731908742009316011}
   dropBlockController: {fileID: 6679013931174112941, guid: 5fc7c93c24d37244dab1a5c708203b54,
     type: 3}
   moveBlock: {fileID: 7998317574631422338}
   startBlock: {fileID: 7344160093349683559, guid: 64290df955172ab40bd657dffe47c76f,
     type: 3}
-  marginError: 0.03
+  marginError: 0.025
 --- !u!114 &7998317574631422338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,9 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66bd24409e8063468ebfc0b56db464c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  borderZ: 1.5
-  borderX: 1.5
   moveSpeed: 2
+  borderZ: 1.3
+  borderX: 1.3
 --- !u!114 &-1093537395532494876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,3 +147,17 @@ MonoBehaviour:
   hueAmountToAdd: 0.02
   saturationAmountToAdd: 0.05
   brightnessAmountToAdd: 0.05
+--- !u!114 &-1731908742009316011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3240725872863056500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0eadbc988c48748a5ba996fcbe33e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  putSound: {fileID: 8300000, guid: f297fb0f7d24ea34384e342edb58bff1, type: 3}
+  perfectMatchSound: {fileID: 8300000, guid: 583fe4baf4fdbd6479d303fb1b0b3a36, type: 3}

@@ -5,12 +5,12 @@ using UnityEngine;
 public class BlockSpawner : MonoBehaviour
 {
     [SerializeField] private BlockController blockPrefab;
+    [SerializeField] private GameObject blockContainer;
     [SerializeField] private MoveDirection moveDirection;
 
     public void SpawningBlock()
     {
-        var block = BlockPool.Instance.GetPooledObject();
-        block.SetActive(true);
+        var block = Instantiate(blockPrefab, blockContainer.transform);
 
         if (BlockController.LastBlock != null && !BlockController.IsStartBlock)
         {
@@ -34,6 +34,8 @@ public class BlockSpawner : MonoBehaviour
         }
         
         BlockController.MoveDirection = moveDirection;
+        
+        
     }
 
     private void OnDrawGizmos()

@@ -45,4 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPrefab: {fileID: 4536742578545156299, guid: f8fa820f0549db44a8b192afeb6291f8,
     type: 3}
+  blockContainer: {fileID: 5130794913534373399, guid: 6a56a26df1ec2e241b2a9407ba5471ed,
+    type: 3}
   moveDirection: 1

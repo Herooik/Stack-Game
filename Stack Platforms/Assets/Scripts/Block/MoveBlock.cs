@@ -6,9 +6,11 @@ using UnityEngine;
 public class MoveBlock : MonoBehaviour
 {
     public bool StopMoving { get; set; }
+    
+    public  float moveSpeed;
+    
     [SerializeField] private float borderZ = 2f;
     [SerializeField] private float borderX = 2f;
-    [SerializeField] private float moveSpeed = 2f;
 
     private bool _changeDirection;
 

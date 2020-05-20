@@ -43,5 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b60a33ebc0c69f4449b9ce44aac02300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startGameCanvas: {fileID: 0}
-  endGameCanvas: {fileID: 0}
+  startGameCanvas: {fileID: 6481962673953632240, guid: 2ace67d5d26283c4fb221018e80781f7,
+    type: 3}
+  endGameCanvas: {fileID: 1493106869105467785, guid: 9077b67688e22ac47bdcdac55e8624c5,
+    type: 3}

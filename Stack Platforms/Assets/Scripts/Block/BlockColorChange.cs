@@ -36,7 +36,12 @@ public class BlockColorChange : MonoBehaviour
 
     void Start()
     {
-        if (BlockController.IsStartBlock)
+        SetBlockColor();
+    }
+
+    private void SetBlockColor()
+    {
+        if (!BlockController.LastBlock)
         {
             _hueValue = Random.value;
             _saturation = Random.Range(0.3f, 0.9f);
@@ -44,12 +49,12 @@ public class BlockColorChange : MonoBehaviour
         }
 
         _hueValue += hueAmountToAdd;
-        
+
         if (_hueValue >= 1f)
         {
             _hueValue = 0;
         }
-        
+
         _brightness = ChangeParamValue(ref _brightness, brightnessAmountToAdd, ref _isBrightnessMax,
             ref _isBrightnessMin);
         _saturation = ChangeParamValue(ref _saturation, saturationAmountToAdd, ref _isSaturationMax,

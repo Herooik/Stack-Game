@@ -12,10 +12,6 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Canvas startGameCanvas;
     [SerializeField] private Canvas endGameCanvas;
-    [SerializeField] private Canvas scoreCanvas;
-    [SerializeField] private TextMeshProUGUI scoreText;
-
-    private int _score;
 
     private void Awake()
     {
@@ -28,13 +24,6 @@ public class UIManager : MonoBehaviour
     public void HideStartCanvas()
     {
         startGameCanvas.gameObject.SetActive(false);
-    }
-
-    public void AddScore()
-    {
-        _score++;
-        scoreText.text = _score.ToString();
-        scoreCanvas.gameObject.SetActive(true);
     }
 
     public void ShowEndGameCanvas()
