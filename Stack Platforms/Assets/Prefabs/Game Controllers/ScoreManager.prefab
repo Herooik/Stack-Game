@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
-  scoreCanvas: {fileID: 4905371817665535195, guid: d64b81216d150664abd97515fab77de1,
-    type: 3}
+  scoreCanvas: {fileID: 0}
   moveBlock: {fileID: 7998317574631422338, guid: f8fa820f0549db44a8b192afeb6291f8,
     type: 3}

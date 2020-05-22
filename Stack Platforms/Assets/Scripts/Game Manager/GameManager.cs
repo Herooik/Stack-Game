@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +23,18 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         BlockController.IsBlockOutside = false;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(WaitForStartUI());
+        enabled = false;
+    }
+
+    private IEnumerator WaitForStartUI()
+    {
+        yield return new WaitForSeconds(0.2f);
+        enabled = true;
     }
 
     private void Update()
