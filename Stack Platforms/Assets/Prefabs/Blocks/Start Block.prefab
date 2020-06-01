@@ -107,8 +107,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockRenderer: {fileID: 7344160093349683557}
-  dropBlockRenderer: {fileID: 7318586875391348453, guid: 5fc7c93c24d37244dab1a5c708203b54,
-    type: 3}
   hueAmountToAdd: 0.02
   saturationAmountToAdd: 0.05
   brightnessAmountToAdd: 0.05
