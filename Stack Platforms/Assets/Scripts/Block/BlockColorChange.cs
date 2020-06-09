@@ -43,11 +43,9 @@ public class BlockColorChange : MonoBehaviour
     {
         if (!BlockController.LastBlock)
         {
-           // _hueValue = Random.value;
-           // _saturation = Random.Range(0.3f, 0.9f);
-           // _brightness = Random.Range(0.3f, 0.9f);
-           var color = Random.ColorHSV(0, 1f, 0.3f, 0.9f, 0.3f, 0.9f);
-           BlockColor = color;
+            _hueValue = Random.value;
+            _saturation = Random.Range(0.3f, 0.9f);
+            _brightness = Random.Range(0.3f, 0.9f);
         }
 
         _hueValue += hueAmountToAdd;

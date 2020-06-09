@@ -47,7 +47,10 @@ public class BlockController : MonoBehaviour
             return;
         }
 
-        if (CheckDistanceDifference(distance)) return;
+        if (CheckDistanceDifference(distance))
+        {
+            return;
+        }
         
         playSoundSystem.PlayPutSound();
         ScoreManager.Instance.AddScore();
@@ -99,7 +102,7 @@ public class BlockController : MonoBehaviour
         CurrentBlock.gameObject.AddComponent<Rigidbody>();
         IsBlockOutside = true;
         LastBlock = null;
-        CurrentBlock = null;
+        Destroy(CurrentBlock.gameObject, 1f);
 
         UIManager.Instance.ShowEndGameCanvas();
         return true;

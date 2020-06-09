@@ -9,11 +9,11 @@ public class PlaySoundSystem : MonoBehaviour
     
     public void PlayPutSound()
     {
-        AudioSource.PlayClipAtPoint(putSound, transform.position);
+        AudioSource.PlayClipAtPoint(putSound, Camera.main.transform.position);
     }
     
     public void PlayPerfectMatchSound()
     {
-        AudioSource.PlayClipAtPoint(perfectMatchSound, transform.position);
+        AudioSource.PlayClipAtPoint(perfectMatchSound, Camera.main.transform.position);
     }
 }
